@@ -1,0 +1,124 @@
+@import './base.css';
+
+body {
+  /* display: flex;
+  justify-content: center;
+  margin: 0 auto; */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  grid-area: header;
+}
+
+footer {
+  grid-area: footer;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  color: #030303;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  color: var(--color-text);
+  background: var(--color-background-dark);
+  border: none;
+  border-radius: 28px;
+  padding: 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn active {
+  background: var(--color-button-active);
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('../assets/plus_jakarta_sans/webfonts/PlusJakartaSans-Regular.woff') format('opentype');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-weight: bold;
+  src: url('../assets/plus_jakarta_sans/webfonts/PlusJakartaSans-Bold.woff') format('opentype');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-weight: medium;
+  src: url('../assets/plus_jakarta_sans/webfonts/PlusJakartaSans-Medium.woff2') format('opentype');
+}
+
+/* .header__grid,
+.footer__grid {
+  grid-column: 1 / -1;
+} */
+
+.main__grid {
+  grid-area: main;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  padding: 0;
+}
+
+.page__container {
+  max-width: 1158px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: auto 1fr auto;
+  margin: 0 auto;
+}
+
+.contact {
+  padding: 1.5rem 1em;
+  background-color: #785ede;
+}
+
+.contact {
+  background-color: #552049;
+}
+
+/*Boven de 768px desktop*/
+@media (min-width: 768px) {
+  .page__container {
+    max-width: 100vw;
+    margin: 0 auto;
+    /* display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-row: auto; */
+  }
+}
+
+@media (hover: hover) {
+  /* li:hover {
+    background-color: hsl(160, 100%, 50%);
+  } */
+  .btn:hover {
+    background-color: var(--color-button-hover);
+  }
+}

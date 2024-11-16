@@ -42,7 +42,7 @@
 }
 
 .services__content-header {
-  font-size: 2rem;
+  font-size: 3rem;
   line-height: 100%;
   font-weight: 700;
   text-align: center;
@@ -50,7 +50,11 @@
 }
 
 .services__content-text {
-  font-size: 1.2em;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 28px;
+  color: #7a746e;
+  margin-bottom: 32px;
 }
 
 .category-services {
@@ -135,7 +139,6 @@
 }
 .services {
   max-width: 1158px;
-  border: solid 2px #68b62c;
   padding: 48px 0 32px 0;
   margin: 0 auto;
 }
@@ -199,12 +202,6 @@
     max-width: 1158px;
     padding: 0 24px;
   }
-
-  /* .category-services {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-row: auto;
-  } */
 
   .services__content {
     max-width: 752px;

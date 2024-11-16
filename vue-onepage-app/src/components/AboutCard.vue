@@ -5,7 +5,7 @@
         <img src="../assets/profile.jpg" alt="Amy graphic designer" />
         <div class="about-us__content-block">
           <h2 class="about__content-header">I’m Amy, and I’d love to work on your next project</h2>
-          <p class="services__content-text">
+          <p class="about__content-text">
             I love working with others to create beautiful design solutions. I’ve designed
             everything from brand illustrations to complete mobile apps. I’m also handy with a
             camera!
@@ -35,7 +35,7 @@
 }
 
 .about__content-header {
-  font-size: 2rem;
+  font-size: 3rem;
   line-height: 100%;
   font-weight: 700;
   text-align: left;
@@ -68,6 +68,7 @@
 /* Boven de 768px desktop*/
 @media (min-width: 768px) {
   .about-us__container {
+    max-width: 1158px;
     padding: 0 40px;
   }
 
@@ -88,6 +89,9 @@
     font-size: 40px;
     line-height: 50px;
     color: #030303;
+  }
+  .about-us__content-block {
+    /* padding: 0 40px 0 60px; */
   }
 }
 </style>

@@ -42,6 +42,7 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  flex-wrap: wrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -51,7 +52,14 @@
 }
 
 .contact__text-block {
-  max-width: 540px;
+  gap: 18px;
+  padding-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: start;
+  align-items: flex-start;
 }
 
 .contact__content-header {
@@ -70,5 +78,15 @@
 .contact-button:hover {
   background-color: var(--color-secondary);
   color: #000;
+}
+
+@media (min-width: 768px) {
+  .contact__content-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact__text-block {
+    align-items: flex-start;
+  }
 }
 </style>

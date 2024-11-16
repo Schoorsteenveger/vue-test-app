@@ -95,7 +95,6 @@ export default {
 /* Style as needed */
 .header__nav {
   background-color: var(--color-background);
-  color: rgb(0, 0, 0);
   z-index: 99;
   width: 100%;
   margin: 0 auto;
@@ -110,7 +109,7 @@ export default {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 12px 0;
+  padding: 12px;
   transition: 0.5s ease all;
 }
 

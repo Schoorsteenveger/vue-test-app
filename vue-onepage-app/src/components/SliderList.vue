@@ -1,26 +1,30 @@
-<template class="css" setup>
+<template>
   <section class="projects" id="projects">
     <div class="projects__container">
-      <h3 class="projects__content-header">My projects</h3>
+      <h3 class="projects__content-header">My Projects</h3>
       <div class="slider">
         <div ref="sliderRef" class="projects-slider slider__items">
           <div class="slider__item" v-for="image in images" :key="image.id">
             <img :src="image.imageURL" :alt="image.alt" />
           </div>
         </div>
-        <div class="controls" id="custom-control">
-          <div @click="LeftSlide()" class="control-btn prev"></div>
-          <div @click="RightSlide()" class="control-btn next"></div>
+        <div class="controls">
+          <div @click="scrollLeft" class="control-btn prev">
+            <font-awesome-icon color="white" :icon="['fas', 'arrow-left']" />
+          </div>
+          <div @click="scrollRight" class="control-btn next">
+            <font-awesome-icon color="white" :icon="['fas', 'arrow-right']" />
+          </div>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<style class="css" scoped>
+<style scoped>
 .projects {
   margin: 0 auto;
-  max-width: 100vw;
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -33,177 +37,211 @@
   font-size: 32px;
   line-height: 40px;
   font-weight: 700;
+  margin-bottom: 32px;
   color: #030303;
 }
 
 .projects-slider {
-  display: flex; /* Horizontal layout for slider items */
-  gap: 1em; /* Space between slider items */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  scroll-snap-type: x mandatory; /* Smooth snap scrolling */
-  padding: 1rem 0; /* Add some padding for better visuals */
+  display: flex;
+  gap: 1rem;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
-.slider-item {
-  flex: 0 0 auto; /* Prevent items from shrinking or growing */
-  min-width: 270px; /* Ensure a minimum width for each slider item */
-  scroll-snap-align: start; /* Snap to the start of the item */
+.slider__item {
+  flex: 0 0 auto;
+  min-width: 270px;
+  /* min-width: calc(100% / 2.5); */
 }
 
-.slider-item img {
+.slider__item img {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensure images fit nicely */
+  height: auto;
+  object-fit: cover;
 }
 
 .controls {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  gap: 16px;
   justify-content: center;
-  margin-top: 32px;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #030303;
+  color: white;
   border-radius: 50%;
-  width: 64px;
-  height: 64px;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  transition: background-color 0.3s;
 }
 
 .control-btn:hover {
   background-color: #755cde;
 }
 
-.icon-arrow-right {
-  background-image: url('../assets/icon-arrow-right.svg');
+@media (max-width: 768px) {
+  .slider__item img {
+    width: 340px;
+  }
+  /* .slider__item img {
+    width: 100%;
+  } */
 }
 
-.icon-arrow-left {
-  background-image: url('../assets/icon-arrow-left.svg');
+@media (min-width: 768px) {
+  .slider__item {
+    min-width: calc(100% / 5);
+  }
+  /* .slider__item img {
+    width: 100%;
+  } */
 }
 
-/* groter dan dus vanaf 786px*/
-
-@media (min-width: 786px) {
-  .projects {
-    max-width: 100vw;
-    margin: 0 auto;
-  }
-
-  .projects__container {
-    /* padding: 0 1rem; */
-  }
-
-  .projects__content-header {
-    margin-bottom: 32px;
-    font-size: 36px;
-  }
-  .projects-slider {
-    display: grid; /* Switch to grid for desktop */
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
-    overflow: visible; /* Remove horizontal scroll for desktop */
-    padding: 0; /* Remove extra padding for desktop view */
-  }
-
-  .slider-item {
-    min-width: auto;
-  }
-  .controls {
-    margin-top: 34px;
+@media (min-width: 1200px) {
+  .slider__item {
+    min-width: calc(100% / 6);
   }
 }
 </style>
 
-<script>
+<script setup>
 import { ref, onMounted } from 'vue'
 
-export default {
-  data() {
-    return {
-      images: [
-        {
-          id: 1,
-          imageURL: new URL(
-            '../assets/diamond-shapes-gradient-geometric-background_23-2148820898.avif',
-            import.meta.url,
-          ).href,
-          alt: 'Image 1',
-        },
-        {
-          id: 2,
-          imageURL: new URL(
-            '../assets/gradient-geometric-background_23-2148808999.avif',
-            import.meta.url,
-          ).href,
-          alt: 'Image 2',
-        },
-        {
-          id: 3,
-          imageURL: new URL(
-            '../assets/gradient-geometric-background_23-2148809781.avif',
-            import.meta.url,
-          ).href,
-          alt: 'Image 3',
-        },
-        {
-          id: 4,
-          imageURL: new URL(
-            '../assets/gradient-geometric-shapes-dark-background_23-2148433951.avif',
-            import.meta.url,
-          ).href,
-          alt: 'Image 4',
-        },
-        {
-          id: 5,
-          imageURL: new URL(
-            '../assets/gradient-geometric-shapes-dark-background_23-2148437204.avif',
-            import.meta.url,
-          ).href,
-          alt: 'Image 5',
-        },
-      ],
-    }
+// Reactive variables
+const images = ref([
+  {
+    id: 1,
+    imageURL: new URL(
+      '../assets/diamond-shapes-gradient-geometric-background_23-2148820898.avif',
+      import.meta.url,
+    ).href,
+    alt: 'Image 1',
   },
-}
+  {
+    id: 2,
+    imageURL: new URL('../assets/gradient-geometric-background_23-2148808999.avif', import.meta.url)
+      .href,
+    alt: 'Image 2',
+  },
+  {
+    id: 3,
+    imageURL: new URL('../assets/gradient-geometric-background_23-2148809781.avif', import.meta.url)
+      .href,
+    alt: 'Image 3',
+  },
+  {
+    id: 4,
+    imageURL: new URL(
+      '../assets/gradient-geometric-shapes-dark-background_23-2148433951.avif',
+      import.meta.url,
+    ).href,
+    alt: 'Image 4',
+  },
+  {
+    id: 5,
+    imageURL: new URL(
+      '../assets/gradient-geometric-shapes-dark-background_23-2148437204.avif',
+      import.meta.url,
+    ).href,
+    alt: 'Image 5',
+  },
+  {
+    id: 6,
+    imageURL: new URL(
+      '../assets/diamond-shapes-gradient-geometric-background_23-2148820898.avif',
+      import.meta.url,
+    ).href,
+    alt: 'Image 6',
+  },
+  {
+    id: 7,
+    imageURL: new URL('../assets/gradient-geometric-background_23-2148808999.avif', import.meta.url)
+      .href,
+    alt: 'Image 7',
+  },
+  {
+    id: 8,
+    imageURL: new URL('../assets/gradient-geometric-background_23-2148809781.avif', import.meta.url)
+      .href,
+    alt: 'Image 8',
+  },
+  {
+    id: 9,
+    imageURL: new URL(
+      '../assets/gradient-geometric-shapes-dark-background_23-2148433951.avif',
+      import.meta.url,
+    ).href,
+    alt: 'Image 9',
+  },
+  {
+    id: 10,
+    imageURL: new URL(
+      '../assets/gradient-geometric-shapes-dark-background_23-2148437204.avif',
+      import.meta.url,
+    ).href,
+    alt: 'Image 10',
+  },
+])
 
 const sliderRef = ref(null)
-let isDown = false
-let startX, scrollLeft
 
-onMounted(() => {
+// Draggable slider logic
+const handleDrag = () => {
   const slider = sliderRef.value
-  console.log('mounted?', slider)
+  if (!slider) return
 
-  const startDragging = (e) => {
-    console.log('start', startDragging)
-    isDown = true
-    startX = e.pageX - slider.offsetLeft
+  let isDragging = false
+  let startX, scrollLeft
+
+  const startDrag = (e) => {
+    isDragging = true
+    startX = e.pageX || e.touches[0].pageX
     scrollLeft = slider.scrollLeft
   }
 
-  const stopDragging = () => {
-    isDown = false
+  const stopDrag = () => {
+    isDragging = false
   }
 
-  const drag = (e) => {
-    if (!isDown) return
+  const moveDrag = (e) => {
+    if (!isDragging) return
     e.preventDefault()
-    const x = e.pageX - slider.offsetLeft
-    const walk = x - startX
-    slider.scrollLeft = scrollLeft - walk
+    const x = e.pageX || e.touches[0].pageX
+    const distance = x - startX
+    slider.scrollLeft = scrollLeft - distance
   }
 
-  slider.addEventListener('mousedown', startDragging)
-  slider.addEventListener('mouseleave', stopDragging)
-  slider.addEventListener('mouseup', stopDragging)
-  slider.addEventListener('mousemove', drag)
-})
+  slider.addEventListener('mousedown', startDrag)
+  slider.addEventListener('mouseleave', stopDrag)
+  slider.addEventListener('mouseup', stopDrag)
+  slider.addEventListener('mousemove', moveDrag)
+
+  slider.addEventListener('touchstart', startDrag)
+  slider.addEventListener('touchend', stopDrag)
+  slider.addEventListener('touchmove', moveDrag)
+}
+
+const scrollLeft = () => {
+  const slider = sliderRef.value
+  if (slider) {
+    const slideWidth = slider.clientWidth / 3
+    slider.scrollLeft -= slideWidth
+  }
+}
+
+const scrollRight = () => {
+  const slider = sliderRef.value
+  if (slider) {
+    const slideWidth = slider.clientWidth / 3
+    slider.scrollLeft += slideWidth
+  }
+}
+
+onMounted(handleDrag)
 </script>

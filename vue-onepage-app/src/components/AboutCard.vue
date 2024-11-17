@@ -30,15 +30,11 @@
 .about-us__wrapper img {
   border-radius: 100%;
 }
-.about-us__content-block {
-  flex: 1;
-}
 
 .about__content-header {
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 100%;
   font-weight: 700;
-  text-align: left;
   margin-bottom: 16px;
 }
 
@@ -63,6 +59,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
+  text-align: center;
 }
 
 /* Boven de 768px desktop*/
@@ -89,6 +86,7 @@
     font-size: 40px;
     line-height: 50px;
     color: #030303;
+    text-align: left;
   }
   .about-us__content-block {
     /* padding: 0 40px 0 60px; */

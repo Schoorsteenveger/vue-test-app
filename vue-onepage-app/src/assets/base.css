@@ -47,13 +47,6 @@
 }
 
 body {
-  min-height: 100vh;
-  height: 100%;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
   line-height: 1.5;
   font-family:
     Plus Jakarta Sans,
@@ -69,7 +62,4 @@ body {
     'Helvetica Neue',
     sans-serif;
   font-size: 16px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

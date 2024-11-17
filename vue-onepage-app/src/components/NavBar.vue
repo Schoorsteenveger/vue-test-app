@@ -20,6 +20,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="icon">
         <font-awesome-icon
           icon="bars"
+          color="black"
           @click="toggleMobileNav"
           v-show="mobile"
           :class="{ 'icon-active': mobileNav }"
@@ -109,7 +110,7 @@ export default {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 12px;
+  padding: 0 16px;
   transition: 0.5s ease all;
 }
 
@@ -166,11 +167,12 @@ li {
   right: 24px;
   height: 100%;
   cursor: pointer;
-  transition: transform 0.5s ease; /* Ensure transition is here */
+  transition: transform 0.5s ease;
 }
 
+/* To do  rotate hamburger on toggle*/
 .icon-active {
-  transform: rotate(180deg);
+  transform: rotateX(180deg);
   background-color: aquamarine;
 }
 
@@ -192,23 +194,23 @@ li {
 
 .mobile-nav-enter-active,
 .mobile-nav-leave-active {
-  transition: transform 0.5s ease; /* Smooth animation */
+  transition: transform 0.5s ease;
 }
 
 .mobile-nav-enter-from {
-  transform: translateX(-100%); /* Start from left */
+  transform: translateX(-100%);
 }
 
 .mobile-nav-enter-to {
-  transform: translateX(0); /* Slide in to view */
+  transform: translateX(0);
 }
 
 .mobile-nav-leave-from {
-  transform: translateX(0); /* Start at current position */
+  transform: translateX(0);
 }
 
 .mobile-nav-leave-to {
-  transform: translateX(-100%); /* Slide out to the left */
+  transform: translateX(-100%);
 }
 .link {
   color: var(--color-background-dark);
@@ -226,14 +228,20 @@ li {
 
 @media (min-width: 750px) {
   .nav__menu {
+    width: 100%;
     max-width: 1158px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
   }
   .nav__left img {
     width: 64px;
   }
   .header__nav {
-    position: sticky;
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
     top: 0;
     padding: 0 24px;
     z-index: 99;

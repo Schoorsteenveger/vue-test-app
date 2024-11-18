@@ -88,8 +88,5 @@
     color: #030303;
     text-align: left;
   }
-  .about-us__content-block {
-    /* padding: 0 40px 0 60px; */
-  }
 }
 </style>

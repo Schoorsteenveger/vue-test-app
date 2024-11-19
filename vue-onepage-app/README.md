@@ -2,7 +2,7 @@
 
 # Vue One-Page App  
 
-A sleek, responsive, and interactive single-page portfolio application built with Vue.js. This project demonstrates a modern approach to web development, featuring animations, transitions, and a mobile-first design strategy.  
+A responsive, and interactive single-page portfolio application built with Vue.js. This project demonstrates a modern approach to web development, featuring animations, transitions, and a mobile-first design strategy.  
 
 ## Table of Contents  
 
@@ -116,4 +116,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Feel free to modify this `README.md` to better suit your project goals and audience! 😊
+

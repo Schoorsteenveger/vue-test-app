@@ -53,13 +53,13 @@
 }
 .about-us__content-block {
   padding: 0 40px;
-  max-width: 540px;
+  min-width: 540px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
-  text-align: center;
+  text-align: left;
 }
 
 /* Boven de 768px desktop*/

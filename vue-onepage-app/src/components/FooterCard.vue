@@ -11,16 +11,23 @@
 
 <style scoped>
 .footer__container {
-  height: 80px;
+  width: 100%;
+  height: 100px;
   display: flex;
   justify-content: space-between;
-  padding: 15px;
-  max-width: 1158px;
+  align-items: center;
+  padding: 16px;
   margin: 0 auto;
 }
 
 .footer__logo img {
-  height: 70px;
-  width: auto;
+  width: 40px;
+}
+
+@media (min-width: 786px) {
+  .footer__container {
+    max-width: 1158px;
+    justify-content: space-between;
+  }
 }
 </style>

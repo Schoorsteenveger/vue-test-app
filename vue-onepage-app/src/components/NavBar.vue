@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -93,29 +93,34 @@ export default {
 </script>
 
 <style lang="css" scoped>
-/* Style as needed */
 .header__nav {
   background-color: var(--color-background);
   z-index: 99;
-  width: 100%;
   margin: 0 auto;
-  max-width: 1158px;
+  width: 100%;
   padding: 16px 0 32px 0;
-  transition: 0.5s ease all;
+  position: fixed;
 }
 
 .nav__menu {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 0 16px;
-  transition: 0.5s ease all;
+}
+.nav__left {
+  padding: 16px;
+}
+.nav__left img {
+  width: 55px;
 }
 
 .nav__menu ul,
 .link {
+  font-size: 1.2rem;
   font-weight: 500;
   text-decoration: none;
   list-style: none;
@@ -156,7 +161,6 @@ li {
 
 .nav__left img {
   width: 50px;
-  transition: 0.5s ease all;
 }
 
 .icon {
@@ -173,7 +177,6 @@ li {
 /* To do  rotate hamburger on toggle*/
 .icon-active {
   transform: rotateX(180deg);
-  background-color: aquamarine;
 }
 
 .dropdown-nav {
@@ -228,19 +231,20 @@ li {
 
 @media (min-width: 750px) {
   .nav__menu {
-    width: 100%;
     max-width: 1158px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
   }
+  .nav__left {
+    padding: 16px;
+  }
   .nav__left img {
-    width: 64px;
+    width: 55px;
   }
   .header__nav {
-    width: 100%;
-    max-width: 100%;
+    display: flex;
     position: fixed;
     top: 0;
     padding: 0 24px;

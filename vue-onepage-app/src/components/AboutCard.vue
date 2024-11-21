@@ -19,14 +19,10 @@
 
 <style scoped>
 .about-us {
-  max-width: 1158px;
+  width: 100%;
   padding: 1.5rem 1em;
-  margin: 0 auto;
 }
 
-.about-us {
-  background-color: transparent;
-}
 .about-us__wrapper img {
   border-radius: 100%;
 }
@@ -39,21 +35,24 @@
 }
 
 .about-us__container {
+  max-width: 1158px;
   padding: 0 16px;
+  margin: 0 auto;
 }
 
 .about-us__wrapper {
   flex-direction: column;
+  justify-content: center;
 }
 
 .about-us__wrapper img {
-  max-width: 364px;
+  max-width: 275px;
   margin-left: 0;
   margin-bottom: 40px;
 }
 .about-us__content-block {
   padding: 0 40px;
-  min-width: 540px;
+  max-width: 540px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -63,24 +62,23 @@
 }
 
 /* Boven de 768px desktop*/
-@media (min-width: 768px) {
+@media (min-width: 783px) {
   .about-us__container {
     max-width: 1158px;
     padding: 0 40px;
   }
 
   .about-us__wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
+  }
+  .about-us__wrapper img {
+    min-width: 375px;
+    margin-left: 0;
+    margin-bottom: 40px;
   }
   .about__content-header {
     font-size: 40px;

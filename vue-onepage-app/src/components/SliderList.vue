@@ -52,6 +52,7 @@
 .slider__item {
   flex: 0 0 auto;
   min-width: 270px;
+  scroll-snap-align: start;
   /* min-width: calc(100% / 2.5); */
 }
 
@@ -89,18 +90,15 @@
   .slider__item img {
     width: 340px;
   }
-  /* .slider__item img {
-    width: 100%;
-  } */
 }
 
 @media (min-width: 768px) {
   .slider__item {
     min-width: calc(100% / 5);
   }
-  /* .slider__item img {
+  .slider__item img {
     width: 100%;
-  } */
+  }
 }
 
 @media (min-width: 1200px) {
@@ -191,7 +189,6 @@ const images = ref([
 
 const sliderRef = ref(null)
 
-// Draggable slider logic
 const handleDrag = () => {
   const slider = sliderRef.value
   if (!slider) return

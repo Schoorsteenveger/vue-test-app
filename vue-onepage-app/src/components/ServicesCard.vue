@@ -1,13 +1,14 @@
 <template>
-  <section class="services" id="services">
+  <section class="services" id="services" ref="container">
     <div class="services__container">
-      <div class="services__content">
+      <div ref="content" class="services__content">
         <h2 class="services__content-header">Decisions made easy</h2>
         <p class="services__content-text">
           From generalist to specialist, can I choose between all these different options? No.
           Solutions about design, motion, and code!
         </p>
       </div>
+
       <div class="category-services">
         <div
           v-for="item in items"
@@ -23,12 +24,16 @@
 </template>
 
 <style scoped>
+.services {
+  width: 100%;
+}
 .services__content {
   text-align: center;
   padding: 3em 1em;
 }
 .services__container {
-  padding: 0 24px;
+  padding: 100px 24px;
+  width: 100%;
 }
 
 .services__content-header {
@@ -50,7 +55,6 @@
 .category-services {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  -ms-grid-rows: auto;
   grid-template-rows: auto;
   gap: 24px;
 }
@@ -123,7 +127,6 @@
   line-height: 30px;
 }
 .services {
-  max-width: 1158px;
   padding: 48px 0 32px 0;
   margin: 0 auto;
 }
@@ -135,7 +138,11 @@
 }
 
 /* Media Queries */
-@media (min-width: 670px) {
+@media (max-width: 767px) and (min-width: 674px) {
+  .services__container {
+    padding: 16px 24px;
+    width: 100%;
+  }
   .category-services {
     grid-template-columns: repeat(6, 1fr);
   }
@@ -161,28 +168,29 @@
 
   .item-photography {
     grid-column: 1 / 5;
-
     grid-row: 3 / 4;
     height: auto;
   }
 
   .item-illustration {
     grid-column: 5 / 7;
-
     grid-row: 2 / 3;
   }
   .item-motion {
     grid-column: 5 / 7;
-
     grid-row: 3 / 4;
   }
 }
 
 /* Boven de 768px desktop*/
 @media (min-width: 768px) {
+  .services {
+    padding: 32px 0 48px 0;
+  }
   .services__container {
     max-width: 1158px;
-    padding: 0 24px;
+    padding: 16px 24px;
+    margin: 0 auto;
   }
 
   .services__content {
@@ -212,7 +220,6 @@
 
   .item-photography {
     grid-column: 5 / 7;
-
     grid-row: 1 / 2;
     height: auto;
   }
@@ -224,14 +231,17 @@
 
   .item-motion {
     grid-column: 5 / 7;
-
     grid-row: 2 / 3;
   }
 }
 </style>
 
 <script setup>
-import { ref } from 'vue'
+import gsap from 'gsap'
+import { ref, onMounted } from 'vue'
+
+const container = ref(null) // For the entire container
+const content = ref(null) // For the content div
 
 const items = ref([
   { name: 'Graphic Design', title: 'Graphic Design', color: '#785ede', className: 'item-design' },
@@ -244,11 +254,27 @@ const items = ref([
     color: '#eb7565',
     className: 'item-illustration',
   },
-  {
-    name: 'Motion Design',
-    title: 'Motion Design',
-    color: '#552049',
-    className: 'item-motion',
-  },
+  { name: 'Motion Design', title: 'Motion Design', color: '#552049', className: 'item-motion' },
 ])
+
+onMounted(() => {
+  // Step 1: Animate the content first (fade in)
+  gsap.from(content.value, {
+    delay: 0.3,
+    duration: 1,
+    y: -50,
+    opacity: 0,
+    ease: 'power3.out',
+  })
+
+  // Step 2: Stagger animation for category items after content appears
+  gsap.from('.category-item', {
+    delay: 1.5,
+    duration: 0.8,
+    y: 50,
+    opacity: 0,
+    stagger: 0.2,
+    ease: 'power3.out',
+  })
+})
 </script>

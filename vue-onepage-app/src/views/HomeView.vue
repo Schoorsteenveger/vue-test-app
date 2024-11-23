@@ -6,12 +6,8 @@ import ServicesCard from '@/components/ServicesCard.vue'
 </script>
 
 <template>
-  <main class="main__grid">
-    <ServicesCard />
-    <AboutCard />
-    <SliderList />
-    <ContactCard />
-  </main>
+  <ServicesCard />
+  <AboutCard />
+  <SliderList />
+  <ContactCard />
 </template>
-
-<style></style>

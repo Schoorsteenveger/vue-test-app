@@ -17,17 +17,17 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-border: var(--color-border);
+  /* --color-border: var(--color-border);
   --color-border-hover: var(--color-border-hover);
   --color-border-active: var(--color-border-active);
 
   --color-heading: var(--vt-c-text-light-1);
 
-  --section-gap: 160px;
+  --section-gap: 160px; */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* :root {
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
 
@@ -35,7 +35,7 @@
     --color-border-hover: var(--vt-c-divider-dark-1);
 
     --color-heading: var(--vt-c-text-dark-1);
-  }
+  } */
 }
 
 *,
@@ -47,6 +47,9 @@
 }
 
 body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  position: relative;
   line-height: 1.5;
   font-family:
     Plus Jakarta Sans,

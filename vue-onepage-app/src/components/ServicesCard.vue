@@ -2,7 +2,7 @@
   <section class="services" id="services" ref="container">
     <div class="services__container">
       <div ref="content" class="services__content">
-        <h2 class="services__content-header">Decisions made easy</h2>
+        <h2 class="services__content-header">Design solutions made easy</h2>
         <p class="services__content-text">
           From generalist to specialist, can I choose between all these different options? No.
           Solutions about design, motion, and code!
@@ -24,12 +24,9 @@
 </template>
 
 <style scoped>
-.services {
-  width: 100%;
-}
 .services__content {
   text-align: center;
-  padding: 3em 1em;
+  padding: 32px 0 48px 0;
 }
 .services__container {
   padding: 100px 24px;
@@ -37,8 +34,9 @@
 }
 
 .services__content-header {
-  font-size: 3rem;
-  line-height: 100%;
+  font-size: 36px;
+  line-height: 45px;
+
   font-weight: 700;
   text-align: center;
   margin-bottom: 16px;
@@ -126,19 +124,23 @@
   font-weight: bold;
   line-height: 30px;
 }
-.services {
-  padding: 48px 0 32px 0;
-  margin: 0 auto;
-}
 
 .category-item p {
   text-align: center;
   margin-bottom: 80px;
   font-weight: 600;
 }
+@media (min-width: 674px) {
+  .services {
+    padding: 32px 0 48px 0;
+  }
+}
 
 /* Media Queries */
 @media (max-width: 767px) and (min-width: 674px) {
+  .services {
+    padding: 100px 0 48px 0;
+  }
   .services__container {
     padding: 16px 24px;
     width: 100%;
@@ -240,8 +242,8 @@
 import gsap from 'gsap'
 import { ref, onMounted } from 'vue'
 
-const container = ref(null) // For the entire container
-const content = ref(null) // For the content div
+const container = ref(null)
+const content = ref(null)
 
 const items = ref([
   { name: 'Graphic Design', title: 'Graphic Design', color: '#785ede', className: 'item-design' },

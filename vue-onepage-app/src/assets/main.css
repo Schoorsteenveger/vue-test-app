@@ -1,10 +1,5 @@
 @import './base.css';
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  position: relative;
-}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -12,6 +7,10 @@ html {
 
 header {
   grid-area: header;
+}
+
+main {
+  grid-area: main;
 }
 
 footer {
@@ -51,30 +50,7 @@ p {
   background: var(--color-button-active);
 }
 
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('../assets/plus_jakarta_sans/webfonts/PlusJakartaSans-Regular.woff') format('opentype');
-}
-
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  font-weight: bold;
-  src: url('../assets/plus_jakarta_sans/webfonts/PlusJakartaSans-Bold.woff') format('opentype');
-}
-
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  font-weight: medium;
-  src: url('../assets/plus_jakarta_sans/webfonts/PlusJakartaSans-Medium.woff2') format('opentype');
-}
-
-/* .header__grid,
-.footer__grid {
-  grid-column: 1 / -1;
-} */
-
-.main__grid {
-  grid-area: main;
+.main__layout {
   display: grid;
   gap: 0;
   grid-template-columns: 1fr;
@@ -99,12 +75,13 @@ p {
   padding: 1.5rem 1em;
 }
 
-/*Boven de 768px desktop*/
+/*Boven de 650px desktop*/
 @media (min-width: 650px) {
   .page__container {
     max-width: 100vw;
     width: 100%;
     margin: 0 auto;
+    background-color: #3d7f43;
   }
 }
 

@@ -1,9 +1,9 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <header :class="{ 'scrolled-nav': scrolledNav }" class="header header__nav">
+  <header :class="{ 'scrolled-nav': scrolledNav }" class="header__nav">
     <nav class="nav__menu">
       <div class="nav__left">
         <img class="img" src="@/assets/icon-logo.svg" alt="logo" />
@@ -41,8 +41,6 @@ import { RouterView } from 'vue-router'
       </transition>
     </nav>
   </header>
-
-  <RouterView />
 </template>
 
 <script>
@@ -176,7 +174,8 @@ li {
 
 /* To do  rotate hamburger on toggle*/
 .icon-active {
-  transform: rotateX(180deg);
+  transform: rotateY(140deg);
+  color: #dd1c1c;
 }
 
 .dropdown-nav {

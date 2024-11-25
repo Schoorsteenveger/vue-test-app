@@ -6,18 +6,10 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
-/* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-/* import specific icons */
-// import { all } from '@awesome.me/kit-KIT_CODE/icons'
-
-/* add icons to the library */
-// library.add(...all)
 
 library.add(fas)
 

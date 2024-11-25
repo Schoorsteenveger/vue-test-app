@@ -41,7 +41,9 @@
 }
 
 .about-us__wrapper {
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -71,10 +73,9 @@
   .about-us__wrapper {
     display: flex;
     justify-content: space-between;
-    flex-wrap: nowrap;
-    flex-direction: row;
     align-items: center;
   }
+
   .about-us__wrapper img {
     min-width: 375px;
     margin-left: 0;

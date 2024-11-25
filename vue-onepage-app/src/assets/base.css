@@ -13,13 +13,16 @@
   --color-button-active: rgb(236, 244, 148);
 
   --color-border-hover: rgba(117, 92, 222);
+  --color-border-active: rgb(138, 115, 231);
+
+  --color-button-active: rgb(138, 115, 231);
 }
 
 /* semantic color variables for this project */
 :root {
   /* --color-border: var(--color-border);
   --color-border-hover: var(--color-border-hover);
-  --color-border-active: var(--color-border-active);
+  
 
   --color-heading: var(--vt-c-text-light-1);
 

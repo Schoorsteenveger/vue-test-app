@@ -3,7 +3,7 @@ import NavBar from './components/NavBar.vue'
 import FooterCard from './components/FooterCard.vue'
 </script>
 
-<template>
+<template class="page__container">
   <NavBar />
   <RouterView />
   <FooterCard />

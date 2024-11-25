@@ -187,7 +187,7 @@
 /* Boven de 768px desktop*/
 @media (min-width: 768px) {
   .services {
-    padding: 32px 0 48px 0;
+    padding: 100px 0 48px 0;
   }
   .services__container {
     max-width: 1158px;

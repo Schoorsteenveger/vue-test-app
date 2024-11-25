@@ -1,13 +1,10 @@
-<script setup>
-import { RouterLink } from 'vue-router'
-</script>
-
 <template>
   <header :class="{ 'scrolled-nav': scrolledNav }" class="header__nav">
     <nav class="nav__menu">
       <div class="nav__left">
-        <img class="img" src="@/assets/icon-logo.svg" alt="logo" />
-        <RouterLink to="/"></RouterLink>
+        <RouterLink to="/">
+          <img class="img" src="@/assets/icon-logo.svg" alt="logo" />
+        </RouterLink>
       </div>
 
       <ul v-show="!mobile" class="navigation-nav">
@@ -17,7 +14,7 @@ import { RouterLink } from 'vue-router'
         <li><RouterLink class="link" to="/contact">Contact</RouterLink></li>
       </ul>
 
-      <div class="icon">
+      <Transition class="icon">
         <font-awesome-icon
           icon="bars"
           color="black"
@@ -25,9 +22,9 @@ import { RouterLink } from 'vue-router'
           v-show="mobile"
           :class="{ 'icon-active': mobileNav }"
         />
-      </div>
+      </Transition>
 
-      <transition name="mobile-nav">
+      <Transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
           <li><RouterLink class="link" @click="closeMobileNav" to="/home">Home</RouterLink></li>
           <li><RouterLink class="link" @click="closeMobileNav" to="/about">About</RouterLink></li>
@@ -38,59 +35,54 @@ import { RouterLink } from 'vue-router'
             <RouterLink class="link" @click="closeMobileNav" to="/contact">Contact</RouterLink>
           </li>
         </ul>
-      </transition>
+      </Transition>
     </nav>
   </header>
 </template>
 
-<script>
-export default {
-  name: 'navigation-nav',
-  data() {
-    return {
-      scrolledNav: null,
-      mobile: null,
-      mobileNav: false,
-      windowWidth: window.innerWidth,
-    }
-  },
-  created() {
-    window.addEventListener('resize', this.checkScreen)
-    this.checkScreen()
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.checkScreen)
-  },
-  mounted() {
-    window.addEventListener('scroll', this.updateScroll)
-  },
-  methods: {
-    toggleMobileNav() {
-      this.mobileNav = !this.mobileNav
-    },
-    closeMobileNav() {
-      this.mobileNav = false
-    },
-    updateScroll() {
-      const scrollPosition = window.scrollY
-      if (scrollPosition > 50) {
-        this.scrolledNav = true
-        return
-      }
-      this.scrolledNav = false
-    },
-    checkScreen() {
-      this.windowWidth = window.innerWidth
-      this.mobile = this.windowWidth <= 750
-      if (!this.mobile) {
-        this.mobileNav = false
-      }
-    },
-  },
+<script setup>
+import { RouterLink } from 'vue-router'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const scrolledNav = ref(false)
+const mobile = ref(false)
+const mobileNav = ref(false)
+const windowWidth = ref(window.innerWidth)
+
+const toggleMobileNav = () => {
+  mobileNav.value = !mobileNav.value
+  console.log('Toggling', mobileNav)
 }
+
+const closeMobileNav = () => {
+  mobileNav.value = false
+}
+
+const updateScroll = () => {
+  scrolledNav.value = window.scrollY > 50
+}
+
+const checkScreen = () => {
+  windowWidth.value = window.innerWidth
+  mobile.value = windowWidth.value <= 750
+  if (!mobile.value) {
+    mobileNav.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('resize', checkScreen)
+  window.addEventListener('scroll', updateScroll)
+  checkScreen()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', checkScreen)
+  window.removeEventListener('scroll', updateScroll)
+})
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 .header__nav {
   background-color: var(--color-background);
   z-index: 99;
@@ -109,9 +101,11 @@ export default {
   width: 100%;
   margin: 0 auto;
 }
+
 .nav__left {
   padding: 16px;
 }
+
 .nav__left img {
   width: 55px;
 }
@@ -167,15 +161,15 @@ li {
   position: absolute;
   top: 24px;
   right: 24px;
-  height: 100%;
+  width: 18px;
+  height: auto;
   cursor: pointer;
   transition: transform 0.5s ease;
 }
 
-/* To do  rotate hamburger on toggle*/
 .icon-active {
-  transform: rotateY(140deg);
-  color: #dd1c1c;
+  transform: rotateY(180deg);
+  color: var(--color-button-active);
 }
 
 .dropdown-nav {
@@ -232,7 +226,7 @@ li {
   .nav__menu {
     max-width: 1158px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 0 auto;
   }

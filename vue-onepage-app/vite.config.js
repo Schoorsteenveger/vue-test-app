@@ -8,10 +8,11 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base: '/',
+  base: '/', // Match this with the deployment subpath
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: { chunkSizeWarningLimit: 1600 },
 })

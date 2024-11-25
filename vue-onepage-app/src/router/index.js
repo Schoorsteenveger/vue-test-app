@@ -4,7 +4,7 @@ import ContactView from '@/views/ContactView.vue';
 import AboutView from '@/views/AboutView.vue';
 
 const router = createRouter({
-  history: createWebHistory('/vue-onepage-app/'),
+  history: createWebHistory('/'), // Match this with the base setting in vite.config.js
   routes: [
     {
       path: '/',
